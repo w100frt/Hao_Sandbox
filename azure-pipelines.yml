@@ -33,7 +33,7 @@ steps:
     collectionFileSource: 'Postman Collections/Hao_Sandbox.json'
     environment: 'Staging.postman_environment.json'
     pathToNewman: '/usr/local/lib/node_modules/newman/bin/newman.js'
-    dataFile: payload.json
+    #dataFile: payload.json
     numberOfIterations: 1
     ignoreRedirect: false
     bail: false
