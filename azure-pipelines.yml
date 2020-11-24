@@ -37,8 +37,8 @@ steps:
   inputs:
     collectionFileSource: 'Postman Collections/Hao_Sandbox.json'
     environment: 'Staging.postman_environment.json'
-    pathToNewman: 'C:\Windows\SysWOW64\node_modules\newman\bin\newman.js'
-    #dataFile: payload.json
+    pathToNewman: '\Windows\SysWOW64\node_modules\newman\bin\newman.js'
+    #dataFile: payload.json C:\Windows\SysWOW64\node_modules\newman\bin
     numberOfIterations: 1
     ignoreRedirect: false
     bail: false
