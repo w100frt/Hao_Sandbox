@@ -2,7 +2,7 @@ trigger:
 - master
 
 pool:
-  name: QA-MacOS
+  name: QA-PC
   demands: npm
 
 steps:
