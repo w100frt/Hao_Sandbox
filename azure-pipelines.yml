@@ -56,9 +56,10 @@ steps:
   inputs:	
     testResultsFiles: '**/postmanResults.xml'
 
-- task: Bash@3
-  inputs:
-    filePath: 'script.js'
+- script: |
+   node script.js
+    
+  displayName: 'Node script'
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
