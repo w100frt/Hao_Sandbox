@@ -29,7 +29,7 @@ steps:
 
 - task: DeleteFiles@1
   inputs:
-    SourceFolder: '/Users/setup/myagent/_work/26/s/newman'
+    SourceFolder: 'C:\Windows\SysWOW64\agent\_work\45\s\newman'
     Contents: '**/*'
 
 - task: carlowahlstedt.NewmanPostman.NewmanPostman.NewmanPostman@4
