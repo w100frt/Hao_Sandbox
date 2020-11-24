@@ -38,7 +38,7 @@ steps:
     collectionFileSource: 'Postman Collections/Hao_Sandbox.json'
     environment: 'Staging.postman_environment.json'
     #pathToNewman: '\Windows\SysWOW64\node_modules\newman\bin\newman.js'
-    #dataFile: payload.json C:\Windows\SysWOW64\node_modules\newman\bin
+    #dataFile: payload.json
     numberOfIterations: 1
     ignoreRedirect: false
     bail: false
@@ -64,6 +64,6 @@ steps:
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
-    targetPath: '/Users/setup/myagent/_work/26/s/newman'
+    targetPath: 'C:\Windows\SysWOW64\agent\_work\45\s\newman'
     artifact: Newman_Test_Run
   enabled: true
