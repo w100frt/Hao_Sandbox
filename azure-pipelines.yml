@@ -24,7 +24,7 @@ steps:
 
 - task: DeleteFiles@1
   inputs:
-    SourceFolder: '/Users/setup/myagent/_work/1/s/newman'
+    SourceFolder: '/Users/setup/myagent/_work/26/s/newman'
     Contents: '**/*'
 
 - task: carlowahlstedt.NewmanPostman.NewmanPostman.NewmanPostman@4
@@ -54,6 +54,6 @@ steps:
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
-    targetPath: '/Users/setup/myagent/_work/1/s/newman'
+    targetPath: '/Users/setup/myagent/_work/26/s/newman'
     artifact: Newman_Test_Run
   enabled: true
