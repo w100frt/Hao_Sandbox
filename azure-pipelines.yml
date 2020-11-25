@@ -56,14 +56,16 @@ steps:
   inputs:	
     testResultsFiles: '**/postmanResults.xml'
 
-- script: |
-   node script.js
-    
-  displayName: 'Node script'
-
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
     targetPath: 'C:\Windows\SysWOW64\agent\_work\45\s\newman'
     artifact: Newman_Test_Run
   enabled: true
+
+- script: |
+   node script.js
+    
+  displayName: 'Node script'
+
+
