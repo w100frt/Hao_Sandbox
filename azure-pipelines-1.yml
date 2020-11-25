@@ -1,0 +1,93 @@
+trigger:
+- master
+
+pool:
+  name: QA-PC
+  demands: npm
+
+steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '15.x'
+    checkLatest: true
+
+#- script: |
+   #npm install -g newman
+    
+  #displayName: 'Install Newman'
+
+- task: CmdLine@2
+  inputs:
+    script: 'npm install -g newman'
+    workingDirectory: 'C:\Windows\SysWOW64\agent\_work\45\s'
+
+#- script: |
+   #npm install -g newman-reporter-htmlextra
+   
+  #displayName: 'Install Newman htmlextra'
+
+- task: CmdLine@2
+  inputs:
+    script: 'npm install -g newman-reporter-htmlextra'
+    workingDirectory: 'C:\Windows\SysWOW64\agent\_work\45\s'
+
+#- script: |
+   #npm install -g newman-reporter-testrail
+   
+  #displayName: 'Install TestRail Reporting'
+
+- task: CmdLine@2
+  inputs:
+    script: 'npm install -g newman-reporter-testrail'
+    workingDirectory: 'C:\Windows\SysWOW64\agent\_work\45\s'
+
+- task: DeleteFiles@1
+  inputs:
+    SourceFolder: 'C:\Windows\SysWOW64\agent\_work\45\s\newman'
+    Contents: '**/*'
+
+- task: carlowahlstedt.NewmanPostman.NewmanPostman.NewmanPostman@4
+  displayName: 'Newman - Postman'
+  inputs:
+    collectionFileSource: 'Postman Collections/Hao_Sandbox.json'
+    environment: 'Staging.postman_environment.json'
+    #pathToNewman: '\Windows\SysWOW64\node_modules\newman\bin\newman.js'
+    #dataFile: payload.json
+    numberOfIterations: 1
+    ignoreRedirect: false
+    bail: false
+    sslInsecure: false
+    reporters: junit,htmlextra,testrail
+    reporterJUnitExport: postmanResults.xml
+    htmlExtraDarkTheme: true
+    htmlExtraLogs: true
+    htmlExtraTestPaging: true
+    htmlExtraReportTitle: 'Hao_Sandbox'
+    timeoutScript: 400000
+  continueOnError: true
+- task: PublishTestResults@2	
+  displayName: 'Publish Test Results **/postmanResults.xml'	
+  inputs:	
+    testResultsFiles: '**/postmanResults.xml'
+
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Pipeline Artifact'
+  inputs:
+    targetPath: 'C:\Windows\SysWOW64\agent\_work\45\s\newman'
+    artifact: Newman_Test_Run
+  enabled: true
+
+#- script: |
+   #node script.js
+    
+  #displayName: 'Node script'
+
+- task: CmdLine@2
+  inputs:
+    script: 'node script.js'
+    workingDirectory: 'C:\Windows\SysWOW64\agent\_work\45\s'
+
+
+
+
