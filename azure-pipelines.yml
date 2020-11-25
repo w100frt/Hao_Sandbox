@@ -83,6 +83,6 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'node script.js'
-    workingDirectory: '$(Agent.BuildDirectory)'
+    workingDirectory: '$(Agent.BuildDirectory)/s'
 
 
