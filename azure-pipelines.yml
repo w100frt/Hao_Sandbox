@@ -12,24 +12,38 @@ steps:
     versionSpec: '15.x'
     checkLatest: true
 
-- script: |
-   npm install -g newman
+#- script: |
+   #npm install -g newman
     
-  displayName: 'Install Newman'
+  #displayName: 'Install Newman'
+- task: CmdLine@2
+  inputs:
+    script: 'npm install -g newman'
+    workingDirectory: '$(Agent.BuildDirectory)'
 
-- script: |
-   npm install -g newman-reporter-htmlextra
+#- script: |
+   #npm install -g newman-reporter-htmlextra
    
-  displayName: 'Install Newman htmlextra'
+  #displayName: 'Install Newman htmlextra'
 
-- script: |
-   npm install -g newman-reporter-testrail
+- task: CmdLine@2
+  inputs:
+    script: 'npm install -g newman-reporter-htmlextra'
+    workingDirectory: '$(Agent.BuildDirectory)'
+
+#- script: |
+   #npm install -g newman-reporter-testrail
    
-  displayName: 'Install TestRail Reporting'
+  #displayName: 'Install TestRail Reporting'
+
+- task: CmdLine@2
+  inputs:
+    script: 'npm install -g newman-reporter-testrail'
+    workingDirectory: '$(Agent.BuildDirectory)'
 
 - task: DeleteFiles@1
   inputs:
-    SourceFolder: 'C:\Windows\SysWOW64\agent\_work\45\s\newman'
+    SourceFolder: '$(Agent.BuildDirectory)\s\newman'
     Contents: '**/*'
 
 - task: carlowahlstedt.NewmanPostman.NewmanPostman.NewmanPostman@4
@@ -57,7 +71,7 @@ steps:
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
-    targetPath: 'C:\Windows\SysWOW64\agent\_work\45\s\newman'
+    targetPath: '$(Agent.BuildDirectory)\s\newman'
     artifact: Newman_Test_Run
   enabled: true
 
@@ -69,6 +83,6 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'node script.js'
-    workingDirectory: 'C:\Windows\SysWOW64\node_modules\newman\bin\newman.js'
+    workingDirectory: '$(Agent.BuildDirectory)'
 
 
