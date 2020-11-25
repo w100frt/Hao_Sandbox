@@ -69,6 +69,6 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'node script.js'
-    workingDirectory: 'C:\Windows\SysWOW64\node_modules\newman\bin'
+    workingDirectory: 'C:\Windows\SysWOW64\node_modules\newman\bin\newman.js'
 
 
