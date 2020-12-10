@@ -9,52 +9,6 @@
       "name": "SD Odds - Date Fetch",
       "item": [
         {
-          "name": "MLB Date Fetch",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "04ec5b20-cbf3-492b-b15a-a93cb7ec96ec",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);\r",
-                  "postman.setEnvironmentVariable(\"sdS6Timestamp\", jsonData.currentSelectionId);\r",
-                  "\r",
-                  "pm.test(\"MLB Date - Status code is 200\", function () {\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "a7bb8fac-9dcc-4d3d-984b-dcea3bac07a8",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{qa}}/mlb/scoreboard/main?{{apikey}}",
-              "host": [
-                "{{qa}}"
-              ],
-              "path": [
-                "mlb",
-                "scoreboard",
-                "main"
-              ],
-              "query": [
-                {
-                  "key": "{{apikey}}",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "NFL Date Fetch",
           "event": [
             {
@@ -225,6 +179,52 @@
                 "event",
                 "{{mlbSuper6Event}}",
                 "matchup"
+              ],
+              "query": [
+                {
+                  "key": "{{apikey}}",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "MLB Date Fetch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "04ec5b20-cbf3-492b-b15a-a93cb7ec96ec",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "postman.setEnvironmentVariable(\"sdS6Timestamp\", jsonData.currentSelectionId);\r",
+                  "\r",
+                  "pm.test(\"MLB Date - Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "a7bb8fac-9dcc-4d3d-984b-dcea3bac07a8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{qa}}/mlb/scoreboard/main?{{apikey}}",
+              "host": [
+                "{{qa}}"
+              ],
+              "path": [
+                "mlb",
+                "scoreboard",
+                "main"
               ],
               "query": [
                 {
