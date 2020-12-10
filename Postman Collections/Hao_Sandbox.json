@@ -9,60 +9,6 @@
       "name": "SD Odds - Date Fetch",
       "item": [
         {
-          "name": "NFL Date Fetch",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "63dd9b7f-d9c5-45cd-8df6-a006d47f6dbc",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);\r",
-                  "var date = new Date(); \r",
-                  "var dayOfTheWeek = date.getDay();\r",
-                  "if ((dayOfTheWeek >=1) && (dayOfTheWeek <3)) {\r",
-                  "    postman.setEnvironmentVariable(\"nflOddsTimestamp\", Number(jsonData.currentSelectionId.slice(\"-2\"))+1);\r",
-                  "}\r",
-                  "else {\r",
-                  "    postman.setEnvironmentVariable(\"nflOddsTimestamp\", jsonData.currentSelectionId.slice(\"-2\"));\r",
-                  "}\r",
-                  "\r",
-                  "\r",
-                  "pm.test(\"MLB Date - Status code is 200\", function () {\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "6db5f997-c8a1-407b-8bec-c1572480624d",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{qa}}/nfl/scoreboard/main?{{apikey}}",
-              "host": [
-                "{{qa}}"
-              ],
-              "path": [
-                "nfl",
-                "scoreboard",
-                "main"
-              ],
-              "query": [
-                {
-                  "key": "{{apikey}}",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "CFB Date Fetch",
           "event": [
             {
@@ -298,6 +244,60 @@
                 "event",
                 "{{nflSuper6Event}}",
                 "matchup"
+              ],
+              "query": [
+                {
+                  "key": "{{apikey}}",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "NFL Date Fetch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "63dd9b7f-d9c5-45cd-8df6-a006d47f6dbc",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "var date = new Date(); \r",
+                  "var dayOfTheWeek = date.getDay();\r",
+                  "if ((dayOfTheWeek >=1) && (dayOfTheWeek <3)) {\r",
+                  "    postman.setEnvironmentVariable(\"nflOddsTimestamp\", Number(jsonData.currentSelectionId.slice(\"-2\"))+1);\r",
+                  "}\r",
+                  "else {\r",
+                  "    postman.setEnvironmentVariable(\"nflOddsTimestamp\", jsonData.currentSelectionId.slice(\"-2\"));\r",
+                  "}\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"MLB Date - Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "6db5f997-c8a1-407b-8bec-c1572480624d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{qa}}/nfl/scoreboard/main?{{apikey}}",
+              "host": [
+                "{{qa}}"
+              ],
+              "path": [
+                "nfl",
+                "scoreboard",
+                "main"
               ],
               "query": [
                 {
