@@ -65,7 +65,7 @@
                   "var jsonData = JSON.parse(responseBody);\r",
                   "var date = new Date(); \r",
                   "var dayOfTheWeek = date.getDay();\r",
-                  "if ((dayOfTheWeek >=1) && (dayOfTheWeek <=3)) {\r",
+                  "if ((dayOfTheWeek >=1) && (dayOfTheWeek <3)) {\r",
                   "    postman.setEnvironmentVariable(\"nflOddsTimestamp\", Number(jsonData.currentSelectionId.slice(\"-2\"))+1);\r",
                   "}\r",
                   "else {\r",
@@ -260,6 +260,11 @@
         }
       ],
       "_postman_id": "855c76b8-488e-442a-8060-7b7508dc8654"
+    },
+    {
+      "name": "CBK",
+      "item": [],
+      "_postman_id": "d1395eba-5818-4fce-adee-f5e731767197"
     }
   ]
 }
