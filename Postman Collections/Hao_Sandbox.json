@@ -324,7 +324,88 @@
           "request": {
             "method": "GET",
             "header": [],
-            "url": ""
+            "url": {
+              "raw": "{{sdProd}}/football/cfb/events.json?{{sdKey}}&enable=SuperSix&date={{sdS6Timestamp}}&days=7&top=50",
+              "host": [
+                "{{sdProd}}"
+              ],
+              "path": [
+                "football",
+                "cfb",
+                "events.json"
+              ],
+              "query": [
+                {
+                  "key": "{{sdKey}}",
+                  "value": null
+                },
+                {
+                  "key": "enable",
+                  "value": "SuperSix"
+                },
+                {
+                  "key": "date",
+                  "value": "{{sdS6Timestamp}}"
+                },
+                {
+                  "key": "days",
+                  "value": "7"
+                },
+                {
+                  "key": "top",
+                  "value": "50"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SD CFB Super6 Events 2",
+          "_postman_id": "02707551-87d2-482d-a4c3-c777c3c21f09",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{sdProd}}/football/cfb/events.json?{{sdKey}}&enable=SuperSix&date={{sdS6Timestamp}}&days=7&top=50&skip=50",
+              "host": [
+                "{{sdProd}}"
+              ],
+              "path": [
+                "football",
+                "cfb",
+                "events.json"
+              ],
+              "query": [
+                {
+                  "key": "{{sdKey}}",
+                  "value": null
+                },
+                {
+                  "key": "enable",
+                  "value": "SuperSix"
+                },
+                {
+                  "key": "date",
+                  "value": "{{sdS6Timestamp}}"
+                },
+                {
+                  "key": "days",
+                  "value": "7"
+                },
+                {
+                  "key": "top",
+                  "value": "50"
+                },
+                {
+                  "key": "skip",
+                  "value": "50"
+                }
+              ]
+            }
           },
           "response": []
         }
