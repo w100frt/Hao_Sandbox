@@ -9,6 +9,52 @@
       "name": "MLB",
       "item": [
         {
+          "name": "MLB Date Fetch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "04ec5b20-cbf3-492b-b15a-a93cb7ec96ec",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "postman.setEnvironmentVariable(\"sdS6Timestamp\", jsonData.currentSelectionId);\r",
+                  "\r",
+                  "pm.test(\"MLB Date - Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "a7bb8fac-9dcc-4d3d-984b-dcea3bac07a8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{qa}}/mlb/scoreboard/main?{{apikey}}",
+              "host": [
+                "{{qa}}"
+              ],
+              "path": [
+                "mlb",
+                "scoreboard",
+                "main"
+              ],
+              "query": [
+                {
+                  "key": "{{apikey}}",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "SD MLB Super6 Events",
           "_postman_id": "b4202632-5008-407e-b456-1f933e3c51f3",
           "protocolProfileBehavior": {
@@ -78,17 +124,31 @@
             }
           },
           "response": []
-        },
+        }
+      ],
+      "_postman_id": "54c9ffd0-49d0-4900-a3ad-baf52ce17206"
+    },
+    {
+      "name": "NFL",
+      "item": [
         {
-          "name": "MLB Date Fetch",
+          "name": "NFL Date Fetch",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "04ec5b20-cbf3-492b-b15a-a93cb7ec96ec",
+                "id": "63dd9b7f-d9c5-45cd-8df6-a006d47f6dbc",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);\r",
-                  "postman.setEnvironmentVariable(\"sdS6Timestamp\", jsonData.currentSelectionId);\r",
+                  "var date = new Date(); \r",
+                  "var dayOfTheWeek = date.getDay();\r",
+                  "if ((dayOfTheWeek >=1) && (dayOfTheWeek <3)) {\r",
+                  "    postman.setEnvironmentVariable(\"nflOddsTimestamp\", Number(jsonData.currentSelectionId.slice(\"-2\"))+1);\r",
+                  "}\r",
+                  "else {\r",
+                  "    postman.setEnvironmentVariable(\"nflOddsTimestamp\", jsonData.currentSelectionId.slice(\"-2\"));\r",
+                  "}\r",
+                  "\r",
                   "\r",
                   "pm.test(\"MLB Date - Status code is 200\", function () {\r",
                   "    pm.response.to.have.status(200);\r",
@@ -98,7 +158,7 @@
               }
             }
           ],
-          "_postman_id": "a7bb8fac-9dcc-4d3d-984b-dcea3bac07a8",
+          "_postman_id": "6db5f997-c8a1-407b-8bec-c1572480624d",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -106,12 +166,12 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{qa}}/mlb/scoreboard/main?{{apikey}}",
+              "raw": "{{qa}}/nfl/scoreboard/main?{{apikey}}",
               "host": [
                 "{{qa}}"
               ],
               "path": [
-                "mlb",
+                "nfl",
                 "scoreboard",
                 "main"
               ],
@@ -124,13 +184,7 @@
             }
           },
           "response": []
-        }
-      ],
-      "_postman_id": "54c9ffd0-49d0-4900-a3ad-baf52ce17206"
-    },
-    {
-      "name": "NFL",
-      "item": [
+        },
         {
           "name": "SD NFL Super6 Events",
           "_postman_id": "ed1e77ac-5005-458b-83d4-ab3b8e04067a",
@@ -187,60 +241,6 @@
                 "event",
                 "{{nflSuper6Event}}",
                 "matchup"
-              ],
-              "query": [
-                {
-                  "key": "{{apikey}}",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "NFL Date Fetch",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "63dd9b7f-d9c5-45cd-8df6-a006d47f6dbc",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);\r",
-                  "var date = new Date(); \r",
-                  "var dayOfTheWeek = date.getDay();\r",
-                  "if ((dayOfTheWeek >=1) && (dayOfTheWeek <3)) {\r",
-                  "    postman.setEnvironmentVariable(\"nflOddsTimestamp\", Number(jsonData.currentSelectionId.slice(\"-2\"))+1);\r",
-                  "}\r",
-                  "else {\r",
-                  "    postman.setEnvironmentVariable(\"nflOddsTimestamp\", jsonData.currentSelectionId.slice(\"-2\"));\r",
-                  "}\r",
-                  "\r",
-                  "\r",
-                  "pm.test(\"MLB Date - Status code is 200\", function () {\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "6db5f997-c8a1-407b-8bec-c1572480624d",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{qa}}/nfl/scoreboard/main?{{apikey}}",
-              "host": [
-                "{{qa}}"
-              ],
-              "path": [
-                "nfl",
-                "scoreboard",
-                "main"
               ],
               "query": [
                 {
