@@ -94,36 +94,6 @@
             }
           },
           "response": []
-        },
-        {
-          "name": "BiFrost Super6 Event",
-          "_postman_id": "65197fdf-4914-471d-889a-80687acdc243",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{qa}}/mlb/event/{{mlbSuper6Event}}/matchup?{{apikey}}",
-              "host": [
-                "{{qa}}"
-              ],
-              "path": [
-                "mlb",
-                "event",
-                "{{mlbSuper6Event}}",
-                "matchup"
-              ],
-              "query": [
-                {
-                  "key": "{{apikey}}",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "response": []
         }
       ],
       "_postman_id": "54c9ffd0-49d0-4900-a3ad-baf52ce17206"
@@ -216,36 +186,6 @@
                 {
                   "key": "enable",
                   "value": "SuperSix"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "NFL BiFrost Super6 Event",
-          "_postman_id": "83b7a438-4d78-4293-9ee5-9b7e8fcec765",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{qa}}/nfl/event/{{nflSuper6Event}}/matchup?{{apikey}}",
-              "host": [
-                "{{qa}}"
-              ],
-              "path": [
-                "nfl",
-                "event",
-                "{{nflSuper6Event}}",
-                "matchup"
-              ],
-              "query": [
-                {
-                  "key": "{{apikey}}",
-                  "value": null
                 }
               ]
             }
@@ -405,6 +345,11 @@
         }
       ],
       "_postman_id": "d1395eba-5818-4fce-adee-f5e731767197"
+    },
+    {
+      "name": "NBA",
+      "item": [],
+      "_postman_id": "9b009370-f580-49e1-8b7e-e7283c94a6fa"
     }
   ]
 }
