@@ -348,7 +348,72 @@
     },
     {
       "name": "NBA",
-      "item": [],
+      "item": [
+        {
+          "name": "NBA Date Fetch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "dc253289-8586-49dc-964f-39f0d181f6ea",
+                "exec": [
+                  "\r",
+                  "var jsonData = JSON.parse(responseBody);\r",
+                  "\r",
+                  "const moment = require('moment');\r",
+                  "pm.environment.set(\"sdS6Timestamp\", moment().format(\"YYYYMMDD\"));\r",
+                  "\r",
+                  "//postman.setEnvironmentVariable(\"sdS6Timestamp\", jsonData.currentSelectionId);\r",
+                  "\r",
+                  "pm.test(\"MLB Date - Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "dd15ef39-a257-4569-8dc6-1ac918e0c931",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{qa}}/nba/scoreboard/main?{{apikey}}",
+              "host": [
+                "{{qa}}"
+              ],
+              "path": [
+                "nba",
+                "scoreboard",
+                "main"
+              ],
+              "query": [
+                {
+                  "key": "{{apikey}}",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SD NBA Super6 Events",
+          "_postman_id": "d9211399-b9ec-4010-abd7-ffe840d74764",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": ""
+          },
+          "response": []
+        }
+      ],
       "_postman_id": "9b009370-f580-49e1-8b7e-e7283c94a6fa"
     }
   ]
